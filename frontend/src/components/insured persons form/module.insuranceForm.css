@@ -1,0 +1,121 @@
+.form-box{
+    border: 1px solid #023679;
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    position: relative;
+    
+}
+
+.form-box .title {
+    position: relative;
+    top: -1.5em;
+    margin-left: 1em;
+    display: inline;
+    padding: 0 50px 0 10px;
+    background-color: #F5F5F5;
+    color: rgb(115, 120, 124);
+    font-size: 20px;
+    font-weight: 600;
+    color: #023679;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-box .contant{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 10px 30px;
+}
+
+.input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #023679;
+    border-radius: 0px;
+    width: 80%;
+}
+
+.input-div input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0 20px;
+    color: #023679;
+}
+
+.input-div select{
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #023679;
+}
+
+.contant input[type="text"] {
+    appearance: none; 
+    padding: 8px 12px; 
+    outline: none;
+    font-size: 16px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.form-box button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #023679;
+    font-size: 14px;
+    width: 20%;
+    box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+.form-box button:hover {
+    background-color: transparent;
+    border: 1px solid #023679;
+    border-radius: 10px;
+    color: #023679;
+}
+
+input[type="date"] {
+    appearance: none; 
+    padding: 8px 12px; 
+    outline: none;
+    font-size: 16px; 
+    width: 100%; 
+    box-sizing: border-box; 
+  }
+  
+  /* Styling for date picker arrow */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); 
+    cursor: pointer; 
+  }
+  
+  /* Styling for date picker clear button */
+  input[type="date"]::-webkit-clear-button {
+    display: none; 
+  }
+
+  .error {
+    border: 1px solid red;
+    outline: red;
+  }

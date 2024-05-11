@@ -1,0 +1,157 @@
+.sidenav {
+    height: 100vh;
+    width: 210px;
+    background-color: #003478;
+    transition: 0.5s;
+    padding: 20px 0;
+    left: 0;
+    
+}
+
+/* .sidenav .open{
+    width: 100%;
+} */
+
+/* .sidenav ul {
+    list-style: none;
+    padding: 0 !important;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .logo{
+    margin-left: 20px;
+} */
+
+/* .sidenav ul li a {
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    align-items: center;
+} */
+
+/* .sidenav ul li a:hover {
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #000;
+    display: block;
+    background-color: #EBEBEB;
+     border-radius: 10px; 
+    display: flex;
+    flex-direction: row;
+     justify-content: center; 
+    gap: 10px;
+    align-items: center;
+} */
+
+
+  
+.sidenav.closed {
+    width: 60px;
+    padding: 30px 20px 0 0;
+    /* transform: translateX(-70%); */
+
+}
+/* .toggleDropdown {
+    transition: all .5s ease;
+}
+
+/* .dropdown {
+    background-color: #FAFAFA;
+    transition: 0.5s;
+    
+} */
+
+/* .dropdown a {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.dropdown a:hover {
+    /* padding: 15px 20px; 
+    background-color: #EBEBEB;
+} */
+
+/* .icons-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+} */
+
+.icons-div ul li a {
+    /* padding: 15px 20px; */
+}
+
+.icons-div ul li a:hover {
+    /* padding: 15px 20px; */
+    /* background-color: #EBEBEB; */
+}
+
+/* .booking-icon{
+     width: 250px; 
+    position: relative;
+    background-color: #EBEBEB;
+    color: #fff;
+} */
+
+/* .dropdown-main{
+    position: relative;
+    display: inline-block;
+}
+
+.links{
+    display: none;
+    position: absolute;
+    width: 10%;
+    border-radius: 6px;
+    left: 65px;
+    z-index: 100000;
+    background-color:#EBEBEB;
+    padding: 10px;
+    transition: right 0.3s ease;
+}
+
+.icon{
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+}
+
+
+
+.links a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.dropdow-main:hover .links {
+    display: block;
+}  */
+
+
+.menu-items {
+    color: #fff;
+    z-index: 1;
+}
+
+/* .menu-items > .ant-menu-item:nth-child(3) {
+    color: green;
+  } */
+
+
+

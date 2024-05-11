@@ -1,0 +1,44 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    height: max-content;
+    background-color: #003478;
+}
+
+.page-name p {
+    padding: 0 20px;
+    color: #fff;
+    box-shadow: unset;
+    font-weight: 600; 
+    font-size: 18px
+}
+
+
+.greeting {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 20px;
+}
+
+.greet{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.greeting span {
+    padding: 0 !important;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 14px; 
+    font-weight: 500;
+}
+
+.greeting span:nth-child(2) {
+    font-size: 18px; 
+    font-weight: 600;
+    margin-left: 5px;
+  }

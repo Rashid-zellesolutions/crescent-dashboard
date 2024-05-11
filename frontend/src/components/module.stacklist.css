@@ -1,0 +1,110 @@
+ul{
+    border-top: 1px solid #e5e7eb;
+    width: 90%;
+}
+
+.myList {
+    display: flex;
+    /* display: grid; */
+    grid-column-gap: 1.5rem;
+    justify-content: space-between;
+    padding-top: 1.5rem; /* Adjust this value as needed */
+  padding-bottom: 1.5rem;
+}
+
+.img-div{
+    min-width: 0;
+    grid-column-gap: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.element {
+    height: 3rem; /* h-12 corresponds to a height of 3rem */
+    width: 3rem; /* w-12 corresponds to a width of 3rem */
+    flex: none; /* flex-none corresponds to flex-grow: 0, flex-shrink: 0, flex-basis: auto */
+    border-radius: 9999px; /* rounded-full creates a circle shape; use a large value for border-radius to achieve this */
+    background-color: #f3f4f6; /* bg-gray-50 corresponds to a light gray background color */
+}
+
+.person-details {
+    min-width: 0; /* min-w-0 sets the minimum width to 0 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.person-name {
+    font-size: 0.875rem; /* text-sm corresponds to a font size of 0.875rem */
+    font-weight: 600; /* font-semibold corresponds to a font weight of 600 (semibold) */
+    line-height: 1.5; /* leading-6 corresponds to a line height of 1.5 times the font size */
+    color: #374151; /* text-gray-900 corresponds to a dark gray text color */
+}
+
+.person-email {
+    /* margin-top: 0.25rem; mt-1 corresponds to a margin-top of 0.25rem */
+    overflow: hidden; /* truncate class applies overflow: hidden to truncate overflowing text */
+    font-size: 0.75rem; /* text-xs corresponds to a font size of 0.75rem */
+    line-height: 1.25; /* leading-5 corresponds to a line height of 1.25 times the font size */
+    color: #6b7280; /* text-gray-500 corresponds to a medium gray text color */
+  }
+
+.person-status {
+    display: none; /* hidden class sets display: none to hide the element */
+    flex-shrink: 0; /* shrink-0 class sets flex-shrink: 0 */
+  }
+  
+  @media (min-width: 640px) {
+    .person-status {
+      display: flex; /* sm:flex class sets display: flex at the small breakpoint */
+      flex-direction: column; /* sm:flex-col class sets flex-direction: column at the small breakpoint */
+      align-items: flex-end; /* sm:items-end class sets align-items: flex-end at the small breakpoint */
+    }
+  }
+
+
+.person-role {
+    font-size: 0.875rem; /* text-sm corresponds to a font size of 0.875rem */
+    line-height: 1.5; /* leading-6 corresponds to a line height of 1.5 times the font size */
+    color: #111827; /* text-gray-900 corresponds to a dark gray text color */
+  }
+
+.person-last-seen {
+    margin-top: 0.25rem; /* mt-1 corresponds to a margin-top of 0.25rem */
+    font-size: 0.75rem; /* text-xs corresponds to a font size of 0.75rem */
+    line-height: 1.25; /* leading-5 corresponds to a line height of 1.25 times the font size */
+    color: #6b7280; /* text-gray-500 corresponds to a medium gray text color */
+  }
+
+  .online-main {
+    margin-top: 0.25rem; /* mt-1 corresponds to a margin-top of 0.25rem */
+    display: flex; /* flex class sets display: flex */
+    align-items: center; /* items-center class sets align-items: center */
+  }
+  
+  .online-main > * + * {
+    margin-left: 0.375rem; /* gap-x-1.5 corresponds to a horizontal gap of 0.375rem */
+  }
+
+  .online-b {
+    flex: none; /* flex-none sets flex-grow: 0, flex-shrink: 0, and flex-basis: auto */
+    border-radius: 9999px; /* rounded-full creates a circle shape */
+    background-color: rgba(16, 185, 129, 0.2); /* emerald-500 color with 20% opacity */
+    padding: 0.25rem; /* p-1 corresponds to a padding of 0.25rem */
+  }
+
+.online-c {
+    height: 1.5rem; /* h-1.5 corresponds to a height of 1.5rem */
+    width: 1.5rem; /* w-1.5 corresponds to a width of 1.5rem */
+    border-radius: 50%; /* rounded-full creates a circular shape by setting a border-radius of 50% */
+    background-color: #10b981; /* emerald-500 color */
+  }
+
+.online-d {
+    font-size: 0.75rem; /* text-xs corresponds to a font size of 0.75rem */
+    line-height: 1.25; /* leading-5 corresponds to a line height of 1.25 times the font size */
+    color: #6b7280; /* text-gray-500 corresponds to a medium gray text color */
+  }
