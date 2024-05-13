@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './module.insuredPersons.css'
 import { Space, Table, Dropdown, Button, Collapse,
   DatePicker,
-  Input} from 'antd';
+  Input, Spin} from 'antd';
 import axios from 'axios';
 import {EllipsisOutlined, UserOutlined, DeleteOutlined, EditOutlined, EyeOutlined} from '@ant-design/icons'
 import Link from 'antd/es/typography/Link';
@@ -15,6 +15,7 @@ const InsuredPrsons = () => {
   const [searchedCNIC, setSearchedCNIC] = useState("")
   const [searchDocument, setSearchDocument] = useState("")
   const [selectedDate, setSelectedDate] = useState([])
+  const [loading, setLoading] = useState(true);
   const deletePerson = async (personId) => {
     try {
       const response = await axios.delete(`http://localhost:5000/deleteInsuredPerson/${personId}`);
@@ -39,6 +40,8 @@ const InsuredPrsons = () => {
       setData(response.data.getPersons);
     } catch (error) {
       console.log("Error Getig Data")
+    }finally {
+      setLoading(false); // Set loading to false when data fetching is complete
     }
   }
 
@@ -176,7 +179,7 @@ const handleFilterClear = () => {
   }
 
     useEffect(() => {
-      fetchData()
+      
     }, []);
     useEffect(() => {
       if(searchedName === "") {
@@ -218,8 +221,13 @@ const handleFilterClear = () => {
      
     // };
   return(
-      <div className='main-list-div'>
-      <div>
+      <div className={`main-list-div ${loading ? 'loading' : ''}`}>
+      {loading && (
+        <div className='loading-container'>
+          <Spin size='large' />
+        </div>
+      ) }
+        <div>
           <Collapse
             size="small"
             style={{marginBottom: '10px'}}
@@ -243,8 +251,9 @@ const handleFilterClear = () => {
               
             ]}
           />
-          </div>
+         </div>
         <Table columns={columns} dataSource={data} />
+      
       </div>
     )
 };

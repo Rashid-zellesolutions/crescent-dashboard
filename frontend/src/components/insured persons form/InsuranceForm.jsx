@@ -10,8 +10,17 @@ import { TbCirclesRelation } from "react-icons/tb";
 import { FaRegAddressCard } from "react-icons/fa";
 import axios from 'axios';
 
-// import context to manage state
+import { UserOutlined } from '@ant-design/icons';
+import { Input, DatePicker, Select , option} from 'antd';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useFormContext } from '../../contextApi/formContext';
+
+const dateFormatList = ['DD/MM/YY'];
+dayjs.extend(customParseFormat);
+
+
+// import context to manage state
 
 const InsuranceForm = () => {
 

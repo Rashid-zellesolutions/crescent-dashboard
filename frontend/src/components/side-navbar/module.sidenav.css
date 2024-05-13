@@ -1,5 +1,6 @@
 .sidenav {
-    height: 100vh;
+    /* height: 95vh; */
+    max-height: fit-content;
     width: 220px;
     background-color: #003478;
     transition: 0.5s;

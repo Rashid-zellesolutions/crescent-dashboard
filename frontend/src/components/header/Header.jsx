@@ -5,10 +5,10 @@ import { PiHandsClappingLight } from "react-icons/pi";
 
 const Header = () => {
   // const breadcrumbs = [
-  //   {label: 'Dashboard', link: '/'},
-  //   {label: 'Insurance Form', link: '/insuranceForm'},
-  //   {label: 'Insured People', link: '/insuredPersons'}
-  // ]
+  //   { label: 'Dashboard', link: '/' },
+  //   { label: 'Insurance Form', link: '/insuranceForm' },
+  //   { label: 'Insured People', link: '/insuredPersons' }
+  // ];
   return ( 
     <div className='header'>
         <div className='page-name'>
