@@ -1,9 +1,10 @@
 import React from 'react';
 import './module.sidenav.css';
 import logo from '../../assets/Logo-Website-Black.png';
+import SmallLogo from '../../assets/crescent-small-logo.png';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { ContainerOutlined, MailOutlined } from '@ant-design/icons';
+import { ContainerOutlined, LogoutOutlined, MailOutlined } from '@ant-design/icons';
 
 const SideNavbar = ({ isOpen, handleNavItemChange, activeNavItem }) => {
   const items = [
@@ -17,12 +18,13 @@ const SideNavbar = ({ isOpen, handleNavItemChange, activeNavItem }) => {
         { key: 'insuredPersons', label: 'Insured Persons', link: '/insuredPersons' },
       ],
     },
+    {key: 'logout', icon: <LogoutOutlined />, label: 'Log Out', link: '#'}
   ];
 
   return (
     <div style={{ position: 'fixed'}}>
       <a href='#'>
-        {isOpen ? <img className='logo' src={logo} alt='logo' width={180} /> : <img className='' src={logo} alt='logo' width={80} />}
+        {isOpen ? <img className='logo' src={logo} alt='logo' width={180} /> : <img className='' src={SmallLogo} alt='logo' height={45} />}
       </a>
         <div>
           <div style={{ flex: 1, position: 'relative' }}>
@@ -44,8 +46,8 @@ const SideNavbar = ({ isOpen, handleNavItemChange, activeNavItem }) => {
                   <Link to={link}>{label}</Link>
                 </Menu.Item>
               )}
-              renderSubMenu={({ label, icon, children }) => (
-                <Menu.SubMenu key={label} icon={icon} title={label}>
+              renderSubMenu={({ label, icon, children }, items, index) => (
+                <Menu.SubMenu key={label} icon={icon} title={label} style={index === items.length -1 ? {position: 'relative', bottom: '20px'} : null}>
                   {children.map(({ key, label, link }) => (
                     <Menu.Item key={link}>
                       <Link to={link}>{label}</Link>

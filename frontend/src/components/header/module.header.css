@@ -10,13 +10,15 @@
     color: #fff;
     box-shadow: unset;
     font-weight: 600; 
-    font-size: 18px
+    font-size: 24px
 }
 
 
 .greeting {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 2px;
     padding: 0 20px;
 }

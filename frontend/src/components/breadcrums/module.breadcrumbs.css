@@ -1,0 +1,8 @@
+.breadcrums{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+.saperator{
+    margin: 0.5px
+}

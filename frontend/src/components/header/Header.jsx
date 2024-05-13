@@ -1,12 +1,21 @@
 import React from 'react'
 import "./module.header.css";
 import { PiHandsClappingLight } from "react-icons/pi";
+// import Breadcrumbs from '../breadcrums/Breadcrumbs';
 
 const Header = () => {
+  // const breadcrumbs = [
+  //   {label: 'Dashboard', link: '/'},
+  //   {label: 'Insurance Form', link: '/insuranceForm'},
+  //   {label: 'Insured People', link: '/insuredPersons'}
+  // ]
   return ( 
     <div className='header'>
         <div className='page-name'>
-            <p className='page-heading'>Dashboard</p>
+            <p className='page-heading'>
+            {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
+            Dashboard
+            </p>
         </div>
         <div className='greeting'>
             <span className='greet'>

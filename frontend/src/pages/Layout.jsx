@@ -41,7 +41,7 @@ const Layout = ({ children, history }) => {
     </div>
     <Button type='primary'
       style={{
-            left:isNavOpen?'220px':'90px'
+            left:isNavOpen?'210px':'90px'
           }}
      className="toggle-btn" onClick={toggleNav}>
         {isNavOpen ? <MenuUnfoldOutlined size={15} /> : <MenuFoldOutlined size={15} />}

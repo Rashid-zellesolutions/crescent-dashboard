@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './module.insuredPersons.css'
 import { Space, Table, Dropdown, Button, Collapse,
   DatePicker,
-  Select,} from 'antd';
+  Input} from 'antd';
 import axios from 'axios';
-import {DownOutlined,  DeleteOutlined, EditOutlined, EyeOutlined} from '@ant-design/icons'
+import {EllipsisOutlined, UserOutlined, DeleteOutlined, EditOutlined, EyeOutlined} from '@ant-design/icons'
 import Link from 'antd/es/typography/Link';
+
 const { RangePicker } = DatePicker;
-
-
 
 const InsuredPrsons = () => {
   const [data, setData] = useState([])
+  const [searchedName, setSearchedName] = useState("");
+  const [searchedCNIC, setSearchedCNIC] = useState("")
+  const [searchDocument, setSearchDocument] = useState("")
+  const [selectedDate, setSelectedDate] = useState([])
   const deletePerson = async (personId) => {
     try {
       const response = await axios.delete(`http://localhost:5000/deleteInsuredPerson/${personId}`);
@@ -34,32 +37,63 @@ const InsuredPrsons = () => {
       const response = await axios.get("http://localhost:5000/api/v1/getAllInsuredPersons")
       // console.log(response.data.getPersons)
       setData(response.data.getPersons);
-
     } catch (error) {
       console.log("Error Getig Data")
     }
   }
+
+  const handleSearchedNAme = (e) => {
+    const { value } = e.target;
+    setSearchedName(value);
+  }
+  const handleCNICSearch = (e) => {
+    const {value} = e.target;
+    setSearchedCNIC(value)
+    
+  }
+  const handleDocumentSearch = (e) => {
+    const { value } = e.target;
+    setSearchDocument(value)
+  }
+
+const handleDateRangeChange = (dates) => {
+  setSelectedDate(dates)
+}
+const handleFilterClear = () => {
+  setSearchedName("");
+  setSearchedCNIC("");
+  setSearchDocument("");
+  setSelectedDate([]);
+}
+
   const items = [
     {
-      label: <Button onClick={viewData} className='action-button-list'>
-      <span><EyeOutlined /></span>
-      View
-      </Button>,
-      key: '0',
-    },
-    {
-      label: <Button onClick={deletePerson} className='action-button-list'>
-      <span><DeleteOutlined /></span>
-      Delete</Button>,
       key: '1',
+      label: (
+        <Link className='action-button-list' target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          <span><EyeOutlined /></span>
+           View
+        </Link>
+      ),
     },
     {
-      label: <Button onClick={updatePerson} className='action-button-list'>
-      <span><EditOutlined /></span>
-      Edit</Button>,
       key: '2',
-    }
+      label: (
+        <Link className='action-button-list' target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+          <span><DeleteOutlined /></span> Delete
+        </Link>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <Link className='action-button-list' target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+          <span><EditOutlined /></span> Edit
+        </Link>
+      ),
+    },
   ];
+
 
   const columns = [
     {
@@ -83,6 +117,7 @@ const InsuredPrsons = () => {
     {
       title: 'CNIC',
       dataIndex: 'cnicNumber',
+      // render: (cnic) => formatCNIC(cnic)
       
     },
     {
@@ -122,34 +157,14 @@ const InsuredPrsons = () => {
         <Dropdown menu={{ items }} trigger={['click']}>
           <a onClick={(e) => e.preventDefault()}>
             <Space>
-              <Button shape="circle" icon={<DownOutlined />} />
+              <Button shape="circle" icon={<EllipsisOutlined />} />
             </Space>
           </a>
         </Dropdown>
-        // <Dropdown
-        //   overlay={
-        //     <Space direction="vertical">
-        //       <Button onClick={() => alert("View clicked")} icon={<EyeOutlined />} />
-        //       <Button onClick={() => deletePerson(record._id)} icon={<DeleteOutlined />} />
-        //       <Button onClick={() => alert("Edit clicked")} icon={<EditOutlined />} />
-        //     </Space>
-        //   }
-        //   trigger={['click']}
-        // >
-        //   <a onClick={(e) => e.preventDefault()}>
-        //     <Space direction='vertical'>
-        //       <Button shape="circle" icon={<DownOutlined />} />
-        //     </Space>
-        //   </a>
-        // </Dropdown>
       ),
       
     },
   ];
-
-  const onOk = (value) => {
-    console.log('onOk: ', value);
-  };
   
   const options = [];
   
@@ -159,44 +174,65 @@ const InsuredPrsons = () => {
       label: i.toString(36) + i,
     });
   }
-  
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-
-
-  
 
     useEffect(() => {
       fetchData()
     }, []);
+    useEffect(() => {
+      if(searchedName === "") {
+        fetchData()
+      }else {
+        const filteredData = data.filter(item => item.name.toLowerCase().includes(searchedName.toLowerCase()));
+        setData(filteredData)
+      }
+    }, [searchedName])
+    useEffect(() => {
+      if(searchedCNIC === ''){
+        fetchData();
+      }else{
+        const filteredCNIC = data.filter(item => item.cnicNumber && item.cnicNumber.includes(searchedCNIC));
+        setData(filteredCNIC)
+      }
+    }, [searchedCNIC, data]);
+    useEffect(() => {
+      if(searchDocument === "") {
+        fetchData()
+      } else {
+        const filterDocument = data.filter(item => item.documentNo.toLowerCase().includes(searchDocument.toLowerCase()));
+        setData(filterDocument);
+      }
+    }, [searchDocument, data]);
+
+    useEffect(() => {
+      if(selectedDate.length === 2) {
+        const [startDate, endDate] = selectedDate;
+        const filteredData = data.filter(item => {
+          const itemDate = new Date(item.issueDate);
+          return itemDate >= startDate && itemDate <=endDate;
+        })
+        setData(filteredData);
+      }
+    }, [selectedDate, data]);
+
+    // const formatCNIC = (cnic) => {
+     
+    // };
   return(
       <div className='main-list-div'>
           <Collapse
             size="small"
+            style={{marginBottom: '10px'}}
             items={[
               {
                 key: '1',
                 label: 'Filters',
                 children: (
                   <div className="collspse-div">
-                    <RangePicker
-                      showTime={{ format: 'HH:mm' }}
-                      format="YYYY-MM-DD HH:mm"
-                      onChange={(value, dateString) => {
-                        console.log('Selected Time: ', value);
-                        console.log('Formatted Selected Time: ', dateString);
-                      }}
-                      onOk={onOk}
-                    />
-                    <DatePicker />
-                    <Select
-                      mode="tags"
-                      style={{ width: '100%' }}
-                      placeholder="Tags Mode"
-                      onChange={handleChange}
-                      options={options}
-                    />
+                    <Input placeholder="Search By Name" prefix={<UserOutlined />} value={searchedName} onChange={handleSearchedNAme}/>
+                    <Input placeholder="Search By CNIC" prefix={<UserOutlined />} value={searchedCNIC} maxLength={15} onChange={handleCNICSearch} />
+                    <Input placeholder="Search By Document No" prefix={<UserOutlined />} value={searchDocument} onChange={handleDocumentSearch} />
+                    <RangePicker showTime value={selectedDate} onChange={handleDateRangeChange} />
+                    <Button onClick={handleFilterClear}>Clear Filters</Button>
                   </div>
                 ),
               },

@@ -5,10 +5,9 @@ ul{
 
 .myList {
     display: flex;
-    /* display: grid; */
     grid-column-gap: 1.5rem;
     justify-content: space-between;
-    padding-top: 1.5rem; /* Adjust this value as needed */
+    padding-top: 1.5rem; 
   padding-bottom: 1.5rem;
 }
 
@@ -22,11 +21,11 @@ ul{
 }
 
 .element {
-    height: 3rem; /* h-12 corresponds to a height of 3rem */
-    width: 3rem; /* w-12 corresponds to a width of 3rem */
-    flex: none; /* flex-none corresponds to flex-grow: 0, flex-shrink: 0, flex-basis: auto */
-    border-radius: 9999px; /* rounded-full creates a circle shape; use a large value for border-radius to achieve this */
-    background-color: #f3f4f6; /* bg-gray-50 corresponds to a light gray background color */
+    height: 3rem; 
+    width: 3rem;
+    flex: none; 
+    border-radius: 9999px; 
+    background-color: #f3f4f6; 
 }
 
 .person-details {
