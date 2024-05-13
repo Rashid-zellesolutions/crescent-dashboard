@@ -219,6 +219,7 @@ const handleFilterClear = () => {
     // };
   return(
       <div className='main-list-div'>
+      <div>
           <Collapse
             size="small"
             style={{marginBottom: '10px'}}
@@ -227,17 +228,22 @@ const handleFilterClear = () => {
                 key: '1',
                 label: 'Filters',
                 children: (
-                  <div className="collspse-div">
+                  <div style={{position: 'relative'}}>
+                  <div  className="collspse-div">
                     <Input placeholder="Search By Name" prefix={<UserOutlined />} value={searchedName} onChange={handleSearchedNAme}/>
                     <Input placeholder="Search By CNIC" prefix={<UserOutlined />} value={searchedCNIC} maxLength={15} onChange={handleCNICSearch} />
                     <Input placeholder="Search By Document No" prefix={<UserOutlined />} value={searchDocument} onChange={handleDocumentSearch} />
                     <RangePicker showTime value={selectedDate} onChange={handleDateRangeChange} />
-                    <Button onClick={handleFilterClear}>Clear Filters</Button>
+                    {/* <Button style={{right: 0, bottom: 0, position: 'fixed', marginTop: '30px'}} onClick={handleFilterClear}>Clear Filters</Button> */}
+                  </div>
+                    <Button style={{right: 0, bottom: '0', position: 'absolute'}} onClick={handleFilterClear}>Clear Filters</Button>
                   </div>
                 ),
               },
+              
             ]}
           />
+          </div>
         <Table columns={columns} dataSource={data} />
       </div>
     )
