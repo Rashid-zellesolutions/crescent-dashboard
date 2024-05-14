@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './module.insuredPersons.css'
 import { Space, Table, Dropdown, Button, Collapse,
   DatePicker,
-  Input, Spin} from 'antd';
+  Input, Spin, Menu} from 'antd';
 import axios from 'axios';
 import {EllipsisOutlined, UserOutlined, DeleteOutlined, EditOutlined, EyeOutlined} from '@ant-design/icons'
 import Link from 'antd/es/typography/Link';
@@ -16,12 +16,14 @@ const InsuredPrsons = () => {
   const [searchDocument, setSearchDocument] = useState("")
   const [selectedDate, setSelectedDate] = useState([])
   const [loading, setLoading] = useState(true);
+
   const deletePerson = async (personId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/deleteInsuredPerson/${personId}`);
+      const response = await axios.delete(`http://localhost:5000/api/v1/deleteInsuredPerson/${personId}`);
       console.log("Person deleted successfully");
       alert("Person deleted successfully")
       // Optionally, you can update the table data after deletion
+      console.log("Person id is", personId)
       fetchData();
     } catch (error) {
       console.log("Error Deleting Person:", error);
@@ -31,6 +33,11 @@ const InsuredPrsons = () => {
   const viewData = () => {}
 
   const updatePerson = () => {}
+
+  // let timeout;
+  // function delayDAta(){
+  //   timeout = setTimeout(fetchData, 2000);
+  // }
   
   const fetchData = async() => {
     try {
@@ -73,26 +80,26 @@ const handleFilterClear = () => {
     {
       key: '1',
       label: (
-        <Link className='action-button-list' target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+        <span className='action-button-list'>
           <span><EyeOutlined /></span>
            View
-        </Link>
+        </span>
       ),
     },
     {
       key: '2',
       label: (
-        <Link className='action-button-list' target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+        <span className='action-button-list' onClick={deletePerson}>
           <span><DeleteOutlined /></span> Delete
-        </Link>
+        </span>
       ),
     },
     {
       key: '3',
       label: (
-        <Link className='action-button-list' target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+        <span className='action-button-list'>
           <span><EditOutlined /></span> Edit
-        </Link>
+        </span>
       ),
     },
   ];
@@ -157,7 +164,22 @@ const handleFilterClear = () => {
       title: 'Action',
       dataIndex: 'action',
       render: (text, record) => (
-        <Dropdown menu={{ items }} trigger={['click']}>
+        <Dropdown
+          overlay={
+            <Menu>
+              {/* <Menu.Item onClick={() => viewSinglePerson(record.insuredID)}>
+                <span><EyeOutlined /></span> View
+              </Menu.Item> */}
+              <Menu.Item onClick={() => deletePerson(record.insuredID)}>
+                <span><DeleteOutlined /></span> Delete
+              </Menu.Item>
+              {/* <Menu.Item onClick={() => updatePerson(record.insuredID)}>
+                <span><EditOutlined /></span> Edit
+              </Menu.Item> */}
+            </Menu>
+          }
+          trigger={['click']}
+        >
           <a onClick={(e) => e.preventDefault()}>
             <Space>
               <Button shape="circle" icon={<EllipsisOutlined />} />
@@ -165,6 +187,15 @@ const handleFilterClear = () => {
           </a>
         </Dropdown>
       ),
+      // render: (text, record) => (
+      //   <Dropdown menu={{ items }} trigger={['click']}>
+      //     <a onClick={(e) => e.preventDefault()}>
+      //       <Space>
+      //         <Button shape="circle" icon={<EllipsisOutlined />} />
+      //       </Space>
+      //     </a>
+      //   </Dropdown>
+      // ),
       
     },
   ];
@@ -179,8 +210,11 @@ const handleFilterClear = () => {
   }
 
     useEffect(() => {
+      // delayDAta()
+      fetchData()
       
     }, []);
+
     useEffect(() => {
       if(searchedName === "") {
         fetchData()
@@ -189,6 +223,7 @@ const handleFilterClear = () => {
         setData(filteredData)
       }
     }, [searchedName])
+
     useEffect(() => {
       if(searchedCNIC === ''){
         fetchData();
@@ -197,6 +232,7 @@ const handleFilterClear = () => {
         setData(filteredCNIC)
       }
     }, [searchedCNIC, data]);
+
     useEffect(() => {
       if(searchDocument === "") {
         fetchData()

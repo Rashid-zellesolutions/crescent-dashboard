@@ -8,12 +8,14 @@ import { ContainerOutlined, LogoutOutlined, MailOutlined } from '@ant-design/ico
 
 const SideNavbar = ({ isOpen, handleNavItemChange, activeNavItem }) => {
   const items = [
-    { key: 'dashboard', icon: <ContainerOutlined />, label: 'Dashboard', link: '/' },
+    { key: 'home', icon: <ContainerOutlined />, label: 'Dashboard', link: '/' },
+    {key: 'uploadImage', label: 'Upload Image', link: '/uplaodimage'},
     {
       key: 'add users',
       label: 'Insured Person',
       icon: <MailOutlined />,
       children: [
+        // {key: 'home', label: 'Home', link: '/home'},
         { key: 'insuranceForm', label: 'Insurance Form', link: '/insuranceForm' },
         { key: 'insuredPersons', label: 'Insured Persons', link: '/insuredPersons' },
       ],
@@ -29,7 +31,7 @@ const SideNavbar = ({ isOpen, handleNavItemChange, activeNavItem }) => {
         <div>
           <div style={{ flex: 1, position: 'relative' }}>
             <Menu
-              defaultOpenKeys={['insuranceForm']}
+              defaultOpenKeys={['home']}
               mode="inline"
               theme="#003478"
               style={{color: '#fff'}}
